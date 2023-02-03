@@ -22,23 +22,18 @@ public class Handler{
 
     @Autowired
     ResizeImage resizeImage;
-
-    AmazonS3 client;
-
-    /*public Handler(){
-        AWSCredentialsProvider credentialsProvider = DefaultAWSCredentialsProviderChain.getInstance();
-        this.client = AmazonS3ClientBuilder.standard().withCredentials(credentialsProvider).build();
-    }*/
-
+    
     public void handleImage( HandleImageDTO data ){
         try {
-            /*S3Object s3Object = getObjectReq(data);
+            AWSCredentialsProvider credentialsProvider = DefaultAWSCredentialsProviderChain.getInstance();
+            AmazonS3 client = AmazonS3ClientBuilder.standard().withCredentials(credentialsProvider).build();
+            S3Object s3Object = getObjectReq(data);
             InputStream stream = s3Object.getObjectContent();
             
             ByteArrayOutputStream outputStream = resizeImage.resize(data, stream);
             
             uploadImage.execute(data, outputStream, client);
-*/
+
         } catch (Exception e) {
             System.out.println(e);
         }
