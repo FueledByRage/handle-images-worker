@@ -21,4 +21,14 @@ outputKey => The outputKey from the file
 
 ## Tests
 
+<<<<<<< HEAD
 For now you can test the resize service by running the ImageResizeTest on the test directory
+=======
+```mermaid
+graph TD;
+    A-->B;
+    A-->C;
+    B-->D;
+    C-->D;
+```
+>>>>>>> 722a31e110ed3ece0bf700177c965171247e5282
