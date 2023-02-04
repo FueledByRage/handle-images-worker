@@ -22,11 +22,11 @@ graph LR;
     B-->C;
     C-->B;
 ```
-Width and Height => Describe the image size <br>
-Region => The AmazonS3 Bucket region <br>
-BucketName => The AmazonS3 Bucket name <br>
-fileName => The name of the file on the bucket <br>
-outputKey => The outputKey from the file <br>
+- Width and Height:  Describe the image size <br>
+- Regions: The AmazonS3 Bucket region <br>
+- BucketNames: The AmazonS3 Bucket name <br>
+- fileNames: The name of the file on the bucket <br>
+- outputKeys: The outputKey from the file <br>
 
 
 ## Tests
