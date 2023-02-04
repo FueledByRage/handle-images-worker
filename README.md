@@ -4,3 +4,11 @@ This gonna be a web application to serve as worker getting references to images 
 
 
 ## Tests
+
+```mermaid
+graph TD;
+    A-->B;
+    A-->C;
+    B-->D;
+    C-->D;
+```
