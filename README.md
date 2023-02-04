@@ -16,9 +16,9 @@ The message must fit the HandleImageDTO:
 ```mermaid
 graph LR;
     A["Producer fa:fa-cubes"]
-    B[("Message Broker (RabbitMq) fa:fa-cubes")]
-    C[("Consumer (Worker) fa:fa-cubes")]
-    D["AmazonS3 (Bucket) fa:fa-globe"]
+    B["Message Broker (RabbitMq) fa:fa-cubes"]
+    C["Consumer (Worker) fa:fa-cubes"]
+    D[("AmazonS3 (Bucket) fa:fa-globe")]
     A-->|Producer message|B;
     B-->|Message Broker|C;
     C-->|Upload edite image to s3 bucket|D;
