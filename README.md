@@ -19,10 +19,10 @@ graph LR;
     B[("Message Broker (RabbitMq) fa:fa-cubes")]
     C[("Consumer (Worker) fa:fa-cubes")]
     D["AmazonS3 (Bucket) fa:fa-globe"]
-    A-->B;
-    B-->C;
-    C-->D;
-    D-->C;
+    A-->|Producer message|B;
+    B-->|Message Broker|C;
+    C-->|Upload edite image to s3 bucket|D;
+    D-->|Request image from s3 bucket|C;
 ```
 - Width and Height:  Describe the image size <br>
 - Regions: The AmazonS3 Bucket region <br>
