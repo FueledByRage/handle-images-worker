@@ -3,6 +3,7 @@
 This worker takes a message from a rabbitmq queue and process an image on a AmazonS3 bucket based on the message info.
 
 The message must fit the HandleImageDTO:
+```
 {
     "width": 
     "height": 
@@ -11,7 +12,7 @@ The message must fit the HandleImageDTO:
     "fileName"
     "outputKey"
 }
-
+```
 ```mermaid
 graph LR;
     A["Producer fa:fa-globe"]
@@ -21,11 +22,11 @@ graph LR;
     B-->C;
     C-->B;
 ```
-Width and Height => Describe the image size
-Region => The AmazonS3 Bucket region
-BucketName => The AmazonS3 Bucket name
-fileName => The name of the file on the bucket
-outputKey => The outputKey from the file
+Width and Height => Describe the image size <br>
+Region => The AmazonS3 Bucket region <br>
+BucketName => The AmazonS3 Bucket name <br>
+fileName => The name of the file on the bucket <br>
+outputKey => The outputKey from the file <br>
 
 
 ## Tests
