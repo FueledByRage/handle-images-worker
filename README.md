@@ -15,12 +15,14 @@ The message must fit the HandleImageDTO:
 ```
 ```mermaid
 graph LR;
-    A["Producer fa:fa-globe"]
-    B[("Consumer (Worker) fa:fa-cubes")]
-    C["AmazonS3 (Bucket) fa:fa-globe"]
+    A["Producer fa:fa-cubes"]
+    B[("Message Broker (RabbitMq) fa:fa-cubes")]
+    C[("Consumer (Worker) fa:fa-globe")]
+    D["AmazonS3 (Bucket) fa:fa-cubes"]
     A-->B;
     B-->C;
-    C-->B;
+    C-->D;
+    D-->C;
 ```
 - Width and Height:  Describe the image size <br>
 - Regions: The AmazonS3 Bucket region <br>
