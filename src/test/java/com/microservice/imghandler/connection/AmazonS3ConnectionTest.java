@@ -3,6 +3,8 @@ package com.microservice.imghandler.connection;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import com.microservice.imghandler.dtos.HandleImageDTO;
+import com.microservice.imghandler.services.RequestImage;
+
 import java.io.IOException;
 import java.io.InputStream;
 
@@ -14,7 +16,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 public class AmazonS3ConnectionTest {
 
     @Autowired
-    private AmazonS3Connection amazonS3Connection;
+    private RequestImage requestImage;
 
     @Test
     public void getObjectReqTest() throws IOException {
@@ -30,12 +32,10 @@ public class AmazonS3ConnectionTest {
         handleImageDTO.setRegion(region);
         handleImageDTO.setOutpuKey("");
 
-        InputStream downloadedInputStream = amazonS3Connection.getObjectReq(handleImageDTO);
+        InputStream downloadedInputStream = requestImage.requestImageAsStream(handleImageDTO);
 
         // Verify that the downloaded image is not null
         assertThat(downloadedInputStream).isNotNull();
-
-        // Clean up: no need to delete the image from S3 as it's a public dataset
     }
 
 }

@@ -3,32 +3,29 @@ package com.microservice.imghandler.services;
 import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.microservice.imghandler.connection.AmazonS3Connection;
 import com.microservice.imghandler.dtos.HandleImageDTO;
 
+import lombok.RequiredArgsConstructor;
+
 @Service
-public class Handler{
+@RequiredArgsConstructor
+public class Handler {
 
-    @Autowired
-    AmazonS3Connection connection;
+    private final RequestImage requestImage;
 
-    @Autowired
-    UploadImage uploadImage;
+    private final UploadImage uploadImage;
 
-    @Autowired
-    ResizeImage resizeImage;
-    
-    public void handleImage( HandleImageDTO data ){
+    private final ResizeImage resizeImage;
+
+    public void handleImage(HandleImageDTO data) {
         try {
-            InputStream stream = connection.getObjectReq(data);
-            
-            ByteArrayOutputStream outputStream = resizeImage.resize(data, stream);
-            
-            uploadImage.execute(data, outputStream);
+            InputStream stream = requestImage.requestImageAsStream(data);
 
+            ByteArrayOutputStream outputStream = resizeImage.resize(data, stream);
+
+            uploadImage.execute(data, outputStream);
         } catch (Exception e) {
             System.out.println(e);
         }
