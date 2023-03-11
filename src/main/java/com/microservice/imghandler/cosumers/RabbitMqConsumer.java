@@ -1,5 +1,6 @@
 package com.microservice.imghandler.cosumers;
 
+import com.microservice.imghandler.utils.DtoUtils;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.stereotype.Component;
 
@@ -19,8 +20,14 @@ public class RabbitMqConsumer {
 
     @RabbitListener(queues = "${spring.rabbitmq.queue}")
     public void listen(HandleImageDTO data) {
-        // worker.submitTask(() -> System.out.println("here " + data));
-        worker.submitTask(() -> handler.handleImage(data));
+        try {
+            if (DtoUtils.hasNullFields(data))
+                throw new IllegalArgumentException("Data fields can not be empty.");
+            worker.submitTask(() -> handler.handleImage(data));
+
+        } catch (IllegalAccessException | IllegalArgumentException error) {
+            System.out.println("Error trying to validate data: " + error);
+        }
     }
 
 }
